@@ -506,7 +506,7 @@
                     Dendoorkatte, Manipura Post<br>
                     Udupi, Karnataka
                 </div>
-                <a href="https://maps.app.goo.gl/XctvK6JhLx4VckE8A" target="_blank" class="location-btn">
+                <a href="https://maps.google.com/?q=Dendoor+Commercial+Centre+Dendoorkatte+Manipura+Udupi" target="_blank" class="location-btn">
                     📍 View Location
                 </a>
             </div>
@@ -603,29 +603,20 @@
         const eventDetails = {
             'robo-soccer': {
                 title: 'FASTBIT ROBO SOCCER',
-                subtitle: 'Register your team for the ultimate robotics football challenge! FREE Entry'
+                subtitle: 'Register your team for the ultimate robotics football challenge! FREE Entry',
+                formUrl: 'https://forms.gle/Uzc6oQDhhFEYtNLn8'
             },
             'circuit-masters': {
                 title: 'CIRCUIT MASTERS',
-                subtitle: 'Register your team for the electronics design competition! FREE Entry'
+                subtitle: 'Register your team for the electronics design competition! FREE Entry',
+                formUrl: 'https://forms.gle/Uzc6oQDhhFEYtNLn8'
             }
         };
 
         function showRegistration(eventType) {
-            const mainContent = document.getElementById('mainContent');
-            const registrationForm = document.getElementById('registrationForm');
-            const formTitle = document.getElementById('formTitle');
-            const formSubtitle = document.getElementById('formSubtitle');
-            const selectedEvent = document.getElementById('selectedEvent');
-
-            formTitle.textContent = eventDetails[eventType].title;
-            formSubtitle.textContent = eventDetails[eventType].subtitle;
-            selectedEvent.value = eventType;
-
-            mainContent.style.display = 'none';
-            registrationForm.classList.add('active');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            // Redirect directly to Google Form
+            const formUrl = eventDetails[eventType].formUrl;
+            window.open(formUrl, '_blank');
         }
 
         function hideRegistration() {
