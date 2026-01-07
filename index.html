@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Techatronics Arena - Event Registration</title>
+    <title>Fastbit Tech Fest - Event Registration</title>
     <style>
         * {
             margin: 0;
@@ -562,13 +562,19 @@
     </div>
 
     <script>
+        // REPLACE THESE WITH YOUR ACTUAL GOOGLE FORM LINKS
         const formUrls = {
-            'robo-soccer': 'https://forms.gle/Uzc6oQDhhFEYtNLn8',
-            'circuit-masters': 'https://forms.gle/Uzc6oQDhhFEYtNLn8'
+            'robo-soccer': 'https://forms.gle/Uzc6oQDhhFEYtNLn8',     // Robo Soccer form
+            'circuit-masters': 'https://forms.gle/8C6eobi7JvHKKerk7'  // Circuit Masters form
         };
 
         function register(eventType) {
-            window.open(formUrls[eventType], '_blank');
+            const formUrl = formUrls[eventType];
+            if (formUrl.includes('PASTE_YOUR')) {
+                alert('Please update the form links in the code!');
+                return;
+            }
+            window.open(formUrl, '_blank');
         }
 
         // Parallax effect for orbs
