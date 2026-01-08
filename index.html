@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fastbit Tech Fest - Event Registration</title>
+    <title>Fastbit - Innovation Hub</title>
     <style>
         * {
             margin: 0;
@@ -14,11 +14,11 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: #0a0a0f;
-            min-height: 100vh;
-            overflow-x: hidden;
             color: #fff;
+            overflow-x: hidden;
         }
 
+        /* Common Backgrounds */
         .bg-gradient {
             position: fixed;
             top: 0;
@@ -78,26 +78,87 @@
             animation-delay: 2s;
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 15, 0.95);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 2px solid #dc2626;
+            backdrop-filter: blur(10px);
         }
 
+        nav .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #dc2626 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav .nav-links button {
+            background: transparent;
+            color: #ffffff;
+            border: 2px solid #dc2626;
+            padding: 10px 25px;
+            margin-left: 15px;
+            cursor: pointer;
+            font-size: 1em;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        nav .nav-links button:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);
+        }
+
+        /* Pages */
+        .page {
+            display: none;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* ===== PAGE 1: INAUGURATION ===== */
         @keyframes slideDown {
             from { opacity: 0; transform: translateY(-30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .hero {
-            text-align: center;
-            padding: 80px 20px;
-            animation: slideDown 1s ease-out;
+        .inauguration-page {
+            padding-top: 100px;
         }
 
-        .hero-badge {
+        .inaug-hero {
+            text-align: center;
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .inaug-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -113,15 +174,10 @@
             animation: slideDown 1s ease-out 0.2s both;
         }
 
-        .hero-badge::before {
-            content: '⚡';
-            font-size: 1.2em;
-        }
-
-        .hero-title {
-            font-size: clamp(3em, 8vw, 7em);
+        .inaug-title {
+            font-size: clamp(2.5em, 6vw, 5em);
             font-weight: 900;
-            line-height: 1;
+            line-height: 1.2;
             margin-bottom: 20px;
             background: linear-gradient(135deg, #fff 0%, #ff3333 50%, #ff0000 100%);
             -webkit-background-clip: text;
@@ -130,20 +186,129 @@
             animation: slideDown 1s ease-out 0.4s both;
         }
 
-        .hero-subtitle {
-            font-size: clamp(1.2em, 3vw, 2em);
-            font-weight: 300;
+        .inaug-subtitle {
+            font-size: clamp(1.2em, 2.5vw, 1.8em);
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            line-height: 1.6;
             animation: slideDown 1s ease-out 0.6s both;
         }
 
-        .hero-cta {
-            display: inline-flex;
+        .inaug-cta {
+            display: flex;
             gap: 20px;
-            flex-wrap: wrap;
             justify-content: center;
+            flex-wrap: wrap;
             animation: slideDown 1s ease-out 0.8s both;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #ff0000, #ff3333);
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        .inaug-info-section {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 60px 40px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+        }
+
+        .inaug-info-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(135deg, #fff, #ff3333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .inaug-details {
+            font-size: 1.2em;
+            line-height: 2;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .inaug-details strong {
+            color: #ff3333;
+            font-size: 1.3em;
+            display: block;
+            margin: 20px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid #2a2a2a;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            border-color: #dc2626;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(220, 38, 38, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #ff3333;
+        }
+
+        .feature-card p {
+            color: #cccccc;
+            line-height: 1.8;
+        }
+
+        /* ===== PAGE 2: REGISTRATION (ORIGINAL CODE) ===== */
+        .registration-page {
+            padding-top: 80px;
         }
 
         .stats-bar {
@@ -176,7 +341,9 @@
         }
 
         .events-section {
-            padding: 80px 0;
+            padding: 80px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
         }
 
         .section-header {
@@ -199,11 +366,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
             gap: 40px;
-        }
-
-        @keyframes cardHover {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-10px); }
         }
 
         .event-card {
@@ -310,42 +472,6 @@
             color: #fff;
         }
 
-        .btn {
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #ff0000, #ff3333);
-            color: #fff;
-            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #fff;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #fff;
-        }
-
         .btn-full {
             width: 100%;
         }
@@ -365,13 +491,16 @@
         }
 
         .venue-section {
-            margin: 80px 0;
+            margin: 80px 40px;
             padding: 60px;
             background: rgba(255, 255, 255, 0.03);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 24px;
             text-align: center;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .venue-title {
@@ -390,43 +519,6 @@
         .venue-details strong {
             color: #ff3333;
             font-size: 1.2em;
-        }
-
-        .tech-line {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            margin: 60px 0;
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 40px 20px;
-            }
-
-            .events-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .event-card {
-                padding: 30px;
-            }
-
-            .stats-bar {
-                gap: 30px;
-            }
-
-            .venue-section {
-                padding: 40px 20px;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-            }
         }
 
         @keyframes pulse {
@@ -450,6 +542,181 @@
             border-radius: 50%;
             animation: pulse 2s ease-in-out infinite;
         }
+
+        /* ===== PAGE 3: GALLERY ===== */
+        .gallery-page {
+            padding-top: 120px;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 40px;
+        }
+
+        .gallery-header h1 {
+            font-size: 3em;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff, #ff3333);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding: 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid #2a2a2a;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-8px);
+            border-color: #dc2626;
+            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.4);
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .placeholder {
+            width: 100%;
+            height: 320px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2em;
+            border: 2px dashed #333;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border: 3px solid #dc2626;
+            border-radius: 8px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: #ffffff;
+            font-size: 45px;
+            cursor: pointer;
+            z-index: 2001;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dc2626;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: #ffffff;
+            color: #dc2626;
+            transform: rotate(90deg);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav .nav-links {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav .nav-links button {
+                margin: 5px;
+            }
+
+            .inaug-cta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-card {
+                padding: 30px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-bar {
+                gap: 30px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -458,124 +725,340 @@
     <div class="orb orb1"></div>
     <div class="orb orb2"></div>
 
-    <div class="container">
-        <div class="hero">
-            <div class="hero-badge">
-                <span class="live-indicator">Registration Open</span>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">⚡ FASTBIT</div>
+            <div class="nav-links">
+                <button onclick="showPage('inauguration')">Inauguration</button>
+                <button onclick="showPage('register')">Tech Event</button>
+                <button onclick="showPage('gallery')">Gallery</button>
             </div>
-            <h1 class="hero-title">FASTBIT<br>TECH FEST '26</h1>
-            <p class="hero-subtitle">Where Innovation Meets Competition</p>
+        </div>
+    </nav>
+
+    <!-- PAGE 1: INAUGURATION -->
+    <div id="inauguration" class="page inauguration-page active">
+        <div class="inaug-hero">
+            <div class="inaug-badge">
+                🎉 Grand Opening Invitation
+            </div>
+            <h1 class="inaug-title">GRAND OPENING</h1>
+            <p class="inaug-subtitle">
+                You are cordially invited to the Grand Opening of the new office of<br>
+                <strong style="color: #ff3333; font-size: 1.2em;">Bharati Software</strong> & 
+                <strong style="color: #ff3333; font-size: 1.2em;">Fastbit Embedded Technologies</strong>
+            </p>
             
-            <div class="stats-bar">
-                <div class="stat-item">
-                    <div class="stat-value">₹29K</div>
-                    <div class="stat-label">Prize Pool</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">2</div>
-                    <div class="stat-label">Events</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value">FREE</div>
-                    <div class="stat-label">Entry</div>
+            <div class="inaug-cta">
+                <button class="btn btn-primary" onclick="showPage('register')">
+                    Register for Tech Fest →
+                </button>
+                <button class="btn btn-secondary" onclick="showPage('gallery')">
+                    📸 View Office Photos
+                </button>
+            </div>
+        </div>
+
+        <div class="inaug-info-section">
+            <h2>Inauguration Ceremony</h2>
+            <div class="inaug-details">
+                <strong>📅 Monday, January 26, 2026 @ 03:30 PM</strong>
+                
+                <p style="margin-top: 30px; font-size: 1.1em;">
+                    1st Floor, Dendoor Commercial Centre<br>
+                    Dendoorkatte Junction, Manipura Post<br>
+                    Udupi – 576120
+                </p>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://maps.app.goo.gl/XctvK6JhLx4VckE8A" target="_blank" class="btn btn-primary">
+                    📍 Get Directions
+                </a>
+            </div>
+        </div>
+
+        <!-- Programme Schedule -->
+        <div style="max-width: 1200px; margin: 80px auto; padding: 0 40px;">
+            <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 50px;">
+                <h2 style="font-size: 2.5em; margin-bottom: 40px; text-align: center; background: linear-gradient(135deg, #fff, #ff3333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Programme Schedule
+                </h2>
+                
+                <div style="display: grid; gap: 25px; max-width: 800px; margin: 0 auto;">
+                    <div style="display: flex; align-items: center; gap: 30px; padding: 25px; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border-left: 4px solid #ff3333;">
+                        <div style="font-size: 1.8em; font-weight: 900; color: #ff3333; min-width: 120px;">08:00 AM</div>
+                        <div style="font-size: 1.2em; color: rgba(255, 255, 255, 0.9);">Puja & Homa</div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 30px; padding: 25px; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border-left: 4px solid #ff3333;">
+                        <div style="font-size: 1.8em; font-weight: 900; color: #ff3333; min-width: 120px;">10:00 AM</div>
+                        <div style="font-size: 1.2em; color: rgba(255, 255, 255, 0.9);">Breakfast</div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 30px; padding: 25px; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border-left: 4px solid #ff3333;">
+                        <div style="font-size: 1.8em; font-weight: 900; color: #ff3333; min-width: 120px;">11:00 AM</div>
+                        <div style="font-size: 1.2em; color: rgba(255, 255, 255, 0.9);">
+                            Tech Fest Events Begin<br>
+                            <span style="font-size: 0.9em; color: rgba(255, 255, 255, 0.6);">• Robo Soccer<br>• Circuit Master 26 PCB Design Contest</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 30px; padding: 25px; background: rgba(255, 51, 51, 0.2); border-radius: 15px; border-left: 4px solid #ff3333; border: 2px solid rgba(255, 51, 51, 0.4);">
+                        <div style="font-size: 1.8em; font-weight: 900; color: #ff3333; min-width: 120px;">03:30 PM</div>
+                        <div style="font-size: 1.2em; color: rgba(255, 255, 255, 0.9); font-weight: 600;">Inauguration & Stage Programme Begins</div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 30px; padding: 25px; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border-left: 4px solid #ff3333;">
+                        <div style="font-size: 1.8em; font-weight: 900; color: #ff3333; min-width: 120px;">04:00 PM</div>
+                        <div style="font-size: 1.2em; color: rgba(255, 255, 255, 0.9);">Speech by Chief Guests & Memento Presentation</div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 30px; padding: 25px; background: rgba(0, 0, 0, 0.3); border-radius: 15px; border-left: 4px solid #ff3333;">
+                        <div style="font-size: 1.8em; font-weight: 900; color: #ff3333; min-width: 120px;">06:30 PM</div>
+                        <div style="font-size: 1.2em; color: rgba(255, 255, 255, 0.9);">High Tea & Snacks</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="tech-line"></div>
-
-        <div class="events-section">
-            <div class="section-header">
-                <h2 class="section-title">Competition Events</h2>
-                <p class="section-subtitle">Choose your battlefield</p>
-            </div>
-
-            <div class="events-grid">
-                <div class="event-card">
-                    <div class="event-icon">⚽🤖</div>
-                    <h3 class="event-name">FASTBIT ROBO SOCCER</h3>
-                    <div class="event-subtitle">Arena Showdown</div>
-                    <p class="event-description">
-                        Experience the ultimate fusion of robotics and soccer. Build autonomous robots that compete in intense matches, showcasing precision, strategy, and engineering excellence.
-                    </p>
-
-                    <div class="prize-grid">
-                        <div class="prize-box">
-                            <div class="prize-rank">1st Place</div>
-                            <div class="prize-amount">₹9,999</div>
-                        </div>
-                        <div class="prize-box">
-                            <div class="prize-rank">2nd Place</div>
-                            <div class="prize-amount">₹4,999</div>
-                        </div>
-                    </div>
-
-                    <div class="entry-badge">✓ Free Registration</div>
-
-                    <button class="btn btn-primary btn-full" onclick="register('robo-soccer')">
-                        Register Team →
-                    </button>
+        <!-- Tech Fest Highlight -->
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px 80px 40px;">
+            <div class="features-grid">
+                <div class="feature-card" style="background: rgba(255, 51, 51, 0.1); border-color: rgba(255, 51, 51, 0.3);">
+                    <h3>⚽🤖 Robo Soccer</h3>
+                    <p>Exclusively for engineering students - Build autonomous robots and compete in the arena</p>
                 </div>
-
-                <div class="event-card">
-                    <div class="event-icon">⚡🔌</div>
-                    <h3 class="event-name">CIRCUIT MASTERS</h3>
-                    <div class="event-subtitle">Electronics Challenge</div>
-                    <p class="event-description">
-                        Test your circuit design and electronics skills! Compete in challenging tasks that require creativity, technical knowledge, and problem-solving abilities.
-                    </p>
-
-                    <div class="prize-grid">
-                        <div class="prize-box">
-                            <div class="prize-rank">1st Place</div>
-                            <div class="prize-amount">₹9,999</div>
-                        </div>
-                        <div class="prize-box">
-                            <div class="prize-rank">2nd Place</div>
-                            <div class="prize-amount">₹4,999</div>
-                        </div>
-                    </div>
-
-                    <div class="entry-badge">✓ Free Registration</div>
-
-                    <button class="btn btn-primary btn-full" onclick="register('circuit-masters')">
-                        Register Team →
-                    </button>
+                <div class="feature-card" style="background: rgba(255, 51, 51, 0.1); border-color: rgba(255, 51, 51, 0.3);">
+                    <h3>⚡🔌 Circuit Master 26</h3>
+                    <p>PCB Design Contest for engineering students - Showcase your circuit design skills</p>
+                </div>
+                <div class="feature-card" style="background: rgba(255, 51, 51, 0.1); border-color: rgba(255, 51, 51, 0.3);">
+                    <h3>🎁 Prize Pool ₹29K</h3>
+                    <p>Win exciting cash prizes and certificates. Free registration for all participants!</p>
                 </div>
             </div>
         </div>
 
-        <div class="tech-line"></div>
-
-        <div class="venue-section">
-            <h2 class="venue-title">Event Details</h2>
-            <div class="venue-details">
-                <strong>📅 Monday, January 26, 2026 @ 11:00 AM</strong><br><br>
-                1st Floor, Dendoor Commercial Centre<br>
-                Dendoorkatte, Manipura Post<br>
-                Udupi, Karnataka
+        <!-- Contact Information -->
+        <div style="max-width: 1200px; margin: 0 auto 80px auto; padding: 0 40px;">
+            <div style="background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 24px; padding: 50px; text-align: center;">
+                <h2 style="font-size: 2.5em; margin-bottom: 40px; background: linear-gradient(135deg, #fff, #ff3333); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                    Contact Us
+                </h2>
+                
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; margin-bottom: 30px;">
+                    <a href="tel:9535672258" style="color: #ff3333; text-decoration: none; font-size: 1.3em; font-weight: 600;">📞 9535672258</a>
+                    <a href="tel:9353419576" style="color: #ff3333; text-decoration: none; font-size: 1.3em; font-weight: 600;">📞 9353419576</a>
+                    <a href="tel:9741617987" style="color: #ff3333; text-decoration: none; font-size: 1.3em; font-weight: 600;">📞 9741617987</a>
+                </div>
+                
+                <a href="mailto:support@fastbitembedded.com" style="color: #ff3333; text-decoration: none; font-size: 1.2em; font-weight: 600;">
+                    ✉️ support@fastbitembedded.com
+                </a>
             </div>
-            <a href="https://maps.app.goo.gl/XctvK6JhLx4VckE8A" target="_blank" class="btn btn-primary">
-                📍 Get Directions
-            </a>
         </div>
     </div>
 
+    <!-- PAGE 2: REGISTRATION (ORIGINAL CODE PRESERVED) -->
+    <div id="register" class="page registration-page">
+        <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
+            <div style="text-align: center; padding: 80px 20px;">
+                <div class="inaug-badge">
+                    <span class="live-indicator">Registration Open</span>
+                </div>
+                <h1 style="font-size: clamp(3em, 8vw, 7em); font-weight: 900; line-height: 1; margin-bottom: 20px; background: linear-gradient(135deg, #fff 0%, #ff3333 50%, #ff0000 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">FASTBIT<br>TECH FEST '26</h1>
+                <p style="font-size: clamp(1.2em, 3vw, 2em); font-weight: 300; color: rgba(255, 255, 255, 0.7); margin-bottom: 40px;">Where Innovation Meets Competition</p>
+                
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <div class="stat-value">₹29K</div>
+                        <div class="stat-label">Prize Pool</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">2</div>
+                        <div class="stat-label">Events</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">FREE</div>
+                        <div class="stat-label">Entry</div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); margin: 60px 0;"></div>
+
+            <div class="events-section">
+                <div class="section-header">
+                    <h2 class="section-title">Competition Events</h2>
+                    <p class="section-subtitle">Choose your battlefield</p>
+                </div>
+
+                <div class="events-grid">
+                    <div class="event-card">
+                        <div class="event-icon">⚽🤖</div>
+                        <h3 class="event-name">FASTBIT ROBO SOCCER</h3>
+                        <div class="event-subtitle">Arena Showdown</div>
+                        <p class="event-description">
+                            Experience the ultimate fusion of robotics and soccer. Build autonomous robots that compete in intense matches, showcasing precision, strategy, and engineering excellence.
+                        </p>
+
+                        <div class="prize-grid">
+                            <div class="prize-box">
+                                <div class="prize-rank">1st Place</div>
+                                <div class="prize-amount">₹9,999</div>
+                            </div>
+                            <div class="prize-box">
+                                <div class="prize-rank">2nd Place</div>
+                                <div class="prize-amount">₹4,999</div>
+                            </div>
+                        </div>
+
+                        <div class="entry-badge">✓ Free Registration</div>
+
+                        <button class="btn btn-primary btn-full" onclick="register('robo-soccer')">
+                            Register Team →
+                        </button>
+                    </div>
+
+                    <div class="event-card">
+                        <div class="event-icon">⚡🔌</div>
+                        <h3 class="event-name">CIRCUIT MASTERS</h3>
+                        <div class="event-subtitle">Electronics Challenge</div>
+                        <p class="event-description">
+                            Test your circuit design and electronics skills! Compete in challenging tasks that require creativity, technical knowledge, and problem-solving abilities.
+                        </p>
+
+                        <div class="prize-grid">
+                            <div class="prize-box">
+                                <div class="prize-rank">1st Place</div>
+                                <div class="prize-amount">₹9,999</div>
+                            </div>
+                            <div class="prize-box">
+                                <div class="prize-rank">2nd Place</div>
+                                <div class="prize-amount">₹4,999</div>
+                            </div>
+                        </div>
+
+                        <div class="entry-badge">✓ Free Registration</div>
+
+                        <button class="btn btn-primary btn-full" onclick="register('circuit-masters')">
+                            Register Team →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div style="height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent); margin: 60px 0;"></div>
+
+            <div class="venue-section">
+                <h2 class="venue-title">Event Details</h2>
+                <div class="venue-details">
+                    <strong>📅 Monday, January 26, 2026 @ 11:00 AM</strong><br><br>
+                    1st Floor, Dendoor Commercial Centre<br>
+                    Dendoorkatte, Manipura Post<br>
+                    Udupi, Karnataka
+                </div>
+                <a href="https://maps.app.goo.gl/XctvK6JhLx4VckE8A" target="_blank" class="btn btn-primary">
+                    📍 Get Directions
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: GALLERY -->
+    <div id="gallery" class="page gallery-page">
+        <div class="gallery-header">
+            <h1>📸 Office Gallery</h1>
+            <p style="color: #e5e5e5; font-size: 1.2em;">Explore our state-of-the-art facilities</p>
+        </div>
+
+        <div class="gallery" id="galleryGrid"></div>
+    </div>
+
+    <!-- Modal for Image Preview -->
+    <div class="modal" id="modal">
+        <span class="close-modal" onclick="closeModal()">×</span>
+        <img class="modal-content" id="modalImg">
+    </div>
+
     <script>
+        // ===== PAGE NAVIGATION =====
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // ===== REGISTRATION FORM =====
         // REPLACE THESE WITH YOUR ACTUAL GOOGLE FORM LINKS
         const formUrls = {
-            'robo-soccer': 'https://forms.gle/Uzc6oQDhhFEYtNLn8',     // Robo Soccer form
-            'circuit-masters': 'https://forms.gle/8C6eobi7JvHKKerk7'  // Circuit Masters form
+            'robo-soccer': 'PASTE_YOUR_ROBO_SOCCER_FORM_LINK_HERE',
+            'circuit-masters': 'PASTE_YOUR_CIRCUIT_MASTERS_FORM_LINK_HERE'
         };
 
         function register(eventType) {
             const formUrl = formUrls[eventType];
             if (formUrl.includes('PASTE_YOUR')) {
-                alert('Please update the form links in the code!');
+                alert('Please update the form links in the code!\n\nFind the formUrls object in the JavaScript and replace with your Google Form links.');
                 return;
             }
             window.open(formUrl, '_blank');
         }
+
+        // ===== GALLERY =====
+        // ADD YOUR GOOGLE DRIVE IMAGE URLs HERE
+        const imageUrls = [
+            // Example: 'https://drive.google.com/uc?export=view&id=YOUR_FILE_ID',
+            '', // Replace with your image URL
+            '', // Replace with your image URL
+            '', // Replace with your image URL
+            '', // Add more as needed
+        ];
+
+        const galleryGrid = document.getElementById('galleryGrid');
+        
+        imageUrls.forEach((url, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            
+            if (url && url.trim() !== '') {
+                const img = document.createElement('img');
+                img.src = url;
+                img.alt = `Fastbit Office ${index + 1}`;
+                img.onerror = function() {
+                    this.parentElement.innerHTML = '<div class="placeholder">Image Failed to Load</div>';
+                };
+                img.onclick = () => openModal(url);
+                item.appendChild(img);
+            } else {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'placeholder';
+                placeholder.textContent = 'Add Image URL Here';
+                item.appendChild(placeholder);
+            }
+            
+            galleryGrid.appendChild(item);
+        });
+
+        // Modal Functions
+        function openModal(url) {
+            document.getElementById('modal').classList.add('active');
+            document.getElementById('modalImg').src = url;
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.remove('active');
+        }
+
+        document.getElementById('modal').onclick = function(e) {
+            if (e.target === this) closeModal();
+        };
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
 
         // Parallax effect for orbs
         document.addEventListener('mousemove', (e) => {
@@ -589,7 +1072,7 @@
             });
         });
 
-        // Smooth scroll reveal
+        // Smooth scroll reveal for event cards
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
