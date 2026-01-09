@@ -100,8 +100,20 @@
         }
 
         nav .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             font-size: 1.8em;
             font-weight: 700;
+        }
+
+        nav .logo-image {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        nav .logo-text {
             background: linear-gradient(135deg, #ffffff 0%, #dc2626 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -306,7 +318,7 @@
             line-height: 1.8;
         }
 
-        /* ===== PAGE 2: REGISTRATION (ORIGINAL CODE) ===== */
+        /* ===== PAGE 2: REGISTRATION ===== */
         .registration-page {
             padding-top: 80px;
         }
@@ -728,7 +740,10 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">⚡ FASTBIT EMBEDDED</div>
+            <div class="logo">
+                <img src="./assests/gallery/logo.PNG" alt="Fastbit Embedded Logo" class="logo-image">
+                <div class="logo-text">FASTBIT EMBEDDED</div>
+            </div>
             <div class="nav-links">
                 <button onclick="showPage('inauguration')">Inauguration</button>
                 <button onclick="showPage('register')">Tech Event</button>
@@ -861,7 +876,7 @@
         </div>
     </div>
 
-    <!-- PAGE 2: REGISTRATION (ORIGINAL CODE PRESERVED) -->
+    <!-- PAGE 2: REGISTRATION -->
     <div id="register" class="page registration-page">
         <div style="max-width: 1400px; margin: 0 auto; padding: 0 20px;">
             <div style="text-align: center; padding: 80px 20px;">
@@ -992,7 +1007,6 @@
         }
 
         // ===== REGISTRATION FORM =====
-        // REPLACE THESE WITH YOUR ACTUAL GOOGLE FORM LINKS
         const formUrls = {
             'robo-soccer': 'https://forms.gle/Uzc6oQDhhFEYtNLn8',
             'circuit-masters': 'https://forms.gle/8C6eobi7JvHKKerk7'
@@ -1008,15 +1022,12 @@
         }
 
         // ===== GALLERY =====
-        // ADD YOUR GOOGLE DRIVE IMAGE URLs HERE
-const imageUrls = [
-  './assests/gallery/IMG_0051.JPG',
-  './assests/gallery/IMG_0052.JPG',
-  './assests/gallery/IMG_0053.JPG',
-  './assests/gallery/IMG_0054.JPG'
-];
-
-
+        const imageUrls = [
+            './assests/gallery/IMG_0051.JPG',
+            './assests/gallery/IMG_0052.JPG',
+            './assests/gallery/IMG_0053.JPG',
+            './assests/gallery/IMG_0054.JPG'
+        ];
 
         const galleryGrid = document.getElementById('galleryGrid');
         
@@ -1097,12 +1108,3 @@ const imageUrls = [
     </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
